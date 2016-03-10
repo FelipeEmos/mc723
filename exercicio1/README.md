@@ -69,4 +69,6 @@ Foi pedido também que usássemos o *gprof* nesses dois códigos e foram obtidos
 * [Log **gprof** da compilação com um arquivo](src/programa3/bin/analysisEX1.txt)
 * [Log **gprof** da compilação com dois arquivos](src/programa3/bin/analysisEX2.txt)
 
-O LOG nos mostra que praticamente 100% do tempo foi gasto dentro da função primo.
+O LOG nos mostra que praticamente 100% do tempo foi gasto dentro da função primo. Isso era esperado.
+
+##Minhas otimizações

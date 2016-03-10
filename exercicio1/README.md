@@ -40,7 +40,18 @@ Como pode ser visto o melhor método de otimização de compilação foi, por um
 * (Repetindo informação) O programa fornecido na página do exercício, "primo.c", quando compilado no gcc sem "tags" adicionais gastou [0.31054s](log/programa1/EX1_primo.log)
 * O programa gerado com ligamento separado dos dois arquivos gastou [0.26936s](log/programa1/EX8_primo_Linking.log)
 </br></br>
-Como pode ser visto o melhor método de otimização de compilação foi o de compilação separada
+Como pode ser visto o melhor método de otimização de compilação foi o de compilação separada. O último resultado não era esperado. Era esperado que em apenas um arquivo fonte o compilador conseguisse usar técnicas de otimização mais facilmente, as chamadas [Interprocedural Optimization(IPO)](https://en.wikipedia.org/wiki/Interprocedural_optimization):
+
+> Inlining </br>
+> Constant propagation </br>
+> mod/ref analysis </br>
+> Alias analysis </br>
+> Forward substitution </br>
+> Routine key-attribute propagation </br>
+> Partial dead call elimination </br>
+> Symbol table data promotion </br>
+> Dead function elimination </br>
+> Whole program analysis </br>
 
 ##Modificando o código
 Após os testes com o programa dado foi pedida a modificação do código:
@@ -51,11 +62,11 @@ Como pedido foram feitos experimentos calculando os primeiros **N** primos sendo
 * Compilando o programa em um arquivo temos tempo de execução de [1.2683s](log/programa2/EX1_primo.log)
 * Compilando o programa em dois arquivos separados temos tempo de execução de [1.2672s](log/programa2/EX2_primo_Linking.log)
 </br></br>
-Como pode ser visto o melhor método de otimização de compilação foi o de compilação separada
+Como pode ser visto o melhor método de otimização de compilação foi o de compilação separada. Este resultado, assim como o último, não era esperado.
 
-Foi pedido que usássemos o *gprof* nesses dois códigos e foram obtidos os seguintes resultados:
-######Obs: O experimento do *gprof* por motivos de organização se encontra em "programa3"
+Foi pedido também que usássemos o *gprof* nesses dois códigos e foram obtidos os seguintes resultados:
+######Obs: O experimento do *gprof* por motivos de organização se encontra em ["programa3"](src/programa3)
 * [Log **gprof** da compilação com um arquivo](src/programa3/bin/analysisEX1.txt)
 * [Log **gprof** da compilação com dois arquivos](src/programa3/bin/analysisEX2.txt)
 
-
+O LOG nos mostra que praticamente 100% do tempo foi gasto dentro da função primo.

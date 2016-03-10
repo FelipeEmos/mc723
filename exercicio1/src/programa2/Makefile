@@ -3,6 +3,7 @@ all: end
 UsingOriginalFile: primo.c
 	#Method simple: no tags on compiler
 	gcc primo.c -o bin/EX1_primo.exe
+	#gcc -pg primo.c -o bin/EX1_primo.exe
 
 UsingSeparatedFiles: main.c calc_primo.c calc_primo.h
 	#Method separate compilation: manualy link
@@ -10,5 +11,6 @@ UsingSeparatedFiles: main.c calc_primo.c calc_primo.h
 	gcc calc_primo.c -c
 	gcc main.o calc_primo.o -o bin/EX2_primo_Linking.exe
 	rm -rf *.o *.s
+	#gcc -pg main.c calc_primo.c -o bin/EX2_primo_Linking.exe
 
 end: UsingOriginalFile UsingSeparatedFiles

@@ -3,7 +3,7 @@ Flat profile:
 Each sample counts as 0.01 seconds.
   %   cumulative   self              self     total           
  time   seconds   seconds    calls  us/call  us/call  name    
-101.05      1.37     1.37    52364    26.25    26.25  primo
+101.10      1.37     1.37   104728    13.13    13.13  primo
 
  %         the percentage of the total running time of the
 time       program used by this function.
@@ -44,12 +44,12 @@ notice and this notice are preserved.
 granularity: each sample hit covers 2 byte(s) for 0.73% of 1.37 seconds
 
 index % time    self  children    called     name
-                1.37    0.00   52364/52364       main [2]
-[1]    100.0    1.37    0.00   52364         primo [1]
+                1.37    0.00  104728/104728      main [2]
+[1]    100.0    1.37    0.00  104728         primo [1]
 -----------------------------------------------
                                                  <spontaneous>
 [2]    100.0    0.00    1.37                 main [2]
-                1.37    0.00   52364/52364       primo [1]
+                1.37    0.00  104728/104728      primo [1]
 -----------------------------------------------
 
  This table describes the call tree of the program, and was sorted by

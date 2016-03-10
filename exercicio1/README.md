@@ -20,25 +20,25 @@ A medição de tempo é feita com o comando "time" já incluído no shell, por i
 
 ##Alternando os parâmetros de compilação
 Primeiramente é importante descobrir os melhores parâmetros para serem colocados no processo de compilação para que se tenha aumento de desempenho. Os experimentos a seguir não envolveram modificação na lógica do código, foram apenas mudanças de parâmetro de compilação.
-######Obs: Os arquivos referentes a essa seção estão em "programa1". Os dados a seguir podem ser conferidos nos arquivos ".log" na pasta log e os processos de compilação estão no Makefile
-* O programa fornecido na página do exercício, "primo.c", quando compilado no gcc sem "tags" adicionais gastou _____
-* Quando compilado com a tag "-O0" gastou _____
-* Quando compilado com a tag "-O1" gastou _____
-* Quando compilado com a tag "-O2" gastou _____
-* Quando compilado com a tag "-O3" gastou _____
+######Obs: Os arquivos referentes a essa seção estão em ["programa1"](src/programa1). Os dados a seguir podem ser conferidos nos arquivos ".log" na [pasta log](log/)
+* O programa fornecido na página do exercício, "primo.c", quando compilado no gcc sem "tags" adicionais gastou [numero](log/programa1/EX1_primo.log)
+* Quando compilado com a tag "-O0" gastou [numero](log/programa1/EX4_primo_O0.log)
+* Quando compilado com a tag "-O1" gastou [numero](log/programa1/EX5_primo_O1.log)
+* Quando compilado com a tag "-O2" gastou [numero](log/programa1/EX6_primo_O2.log)
+* Quando compilado com a tag "-O3" gastou [numero](log/programa1/EX7_primo_O3.log)
 </br></br>
 Como pode ser visto o melhor método de otimização de compilação foi o ______ ....
 </br>Outra forma de otimização é o uso do parâmetro "-mtune": você pode configurar o compilador gcc para gerar um executável otimizado para um grande escopo de máquinas (que usa instruções de processadores IA32/AMD64/EM64T) com o parâmetro "-mtune=generic" ou configurar o compilador para gerar código executável otimizado para um processador específico, por exemplo: "-mtune=i386". Outra possibilidade é compilar com o parâmetro "-mtune=native", isso fará o gcc descobrir **em tempo de compilação** o processador da máquina atual, também gerando executável específico. Vale ressaltar o trivial: um binário específico para um processador não funcionará em processadores que não tem aquele subconjunto de instruções de otimização.
 </br></br>
-* (Repetindo informação) O programa fornecido na página do exercício, "primo.c", quando compilado no gcc sem "tags" adicionais gastou _____
-* Quando compilado com o parâmetro "-mtune=generic" gastou _____
-* Quando compilado com o parâmetro "-mtune=native" gastou _____
+* (Repetindo informação) O programa fornecido na página do exercício, "primo.c", quando compilado no gcc sem "tags" adicionais gastou [numero](log/programa1/EX1_primo.log)
+* Quando compilado com o parâmetro "-mtune=native" gastou [numero](log/programa1/EX2_primo_mtune_native.log)
+* Quando compilado com o parâmetro "-mtune=generic" gastou [numero](log/programa1/EX3_primo_mtune_generic.log)
 </br></br>
 Como pode ser visto o melhor método de otimização de compilação foi o ______ ....
 </br>Mais uma ideia proposta para otimização foi quebrar o programa inicial "primo.c" em dois arquivos separados "main.c" e "calc_primo.c", compilá-los separadamente e depois ligá-los em um executável.
 </br></br>
-* (Repetindo informação) O programa fornecido na página do exercício, "primo.c", quando compilado no gcc sem "tags" adicionais gastou _____
-* O programa gerado com ligamento separado dos dois arquivos gastou ______
+* (Repetindo informação) O programa fornecido na página do exercício, "primo.c", quando compilado no gcc sem "tags" adicionais gastou [numero](log/programa1/EX1_primo.log)
+* O programa gerado com ligamento separado dos dois arquivos gastou [numero](log/programa1/EX8_primo_Linking.log)
 </br></br>
 Como pode ser visto o melhor método de otimização de compilação foi o ______ ....
 
@@ -46,7 +46,7 @@ Como pode ser visto o melhor método de otimização de compilação foi o _____
 Após os testes com o programa dado foi pedida a modificação do código:
 > Modifique seu programa para calcular quantos números primos existem entre 1 e n, seguindo o mesmo algoritmo utilizado, modificando apenas a função main e fazendo com que n seja um parâmetro passado por linha de comando.
 
-######Obs: Este novo código é chamado nos arquivos de programa2
+######Obs: Este novo código é chamado nos arquivos de ["programa2"](src/programa2)
 Como pedido foram feitos experimentos calculando os primeiros **N** primos sendo **N** um número grande, foi usado arbitrariamente **N=10.000**.
 * Compilando o programa em um arquivo temos tempo de execução de ________
 * Compilando o programa em dois arquivos separados temos tempo de execução de ________

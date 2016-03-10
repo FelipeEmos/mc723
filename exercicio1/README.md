@@ -70,4 +70,5 @@ Foi pedido também que usássemos o *gprof* nesses dois códigos e foram obtidos
 
 O LOG nos mostra que praticamente 100% do tempo foi gasto dentro da função primo. Isso era esperado.
 
+
 ##Minhas otimizações

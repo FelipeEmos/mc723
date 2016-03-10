@@ -25,7 +25,7 @@ do
     
 	for (( i=1; i <= $3; ++i ))
 	do
-	  (time ./"$file" $4;) 2>&1 | grep real >> "$2/$FILENAME".log
+	  (time ./"$file";) 2>&1 | grep real >> "$2/$FILENAME".log
 	done
 	
 	(awk '/m[0-9]/{sum += strtonum(substr($2, 3, 5));cnt++} END {print "Avarage:  " sum/cnt "s"}' "$2/$FILENAME".log ) >> "$2/$FILENAME".log

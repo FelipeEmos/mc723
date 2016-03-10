@@ -65,8 +65,10 @@ Como pedido foram feitos experimentos calculando os primeiros **N** primos sendo
 Como pode ser visto o melhor método de otimização de compilação foi o de compilação separada. Este resultado, assim como o último, não era esperado.
 
 Foi pedido também que usássemos o *gprof* nesses dois códigos e foram obtidos os seguintes resultados:
-######Obs: O experimento do *gprof* por motivos de organização se encontra em ["programa3"](src/programa3)
-* [Log **gprof** da compilação com um arquivo](src/programa3/bin/analysisEX1.txt)
-* [Log **gprof** da compilação com dois arquivos](src/programa3/bin/analysisEX2.txt)
+* [Log **gprof** da compilação com um arquivo](log/programa2/analysis1.txt)
+* [Log **gprof** da compilação com dois arquivos](log/programa2/analysis2.txt)
 
-O LOG nos mostra que praticamente 100% do tempo foi gasto dentro da função primo.
+O LOG nos mostra que praticamente 100% do tempo foi gasto dentro da função primo. Isso era esperado.
+
+
+##Minhas otimizações

@@ -54,3 +54,9 @@ Como pedido foram feitos experimentos calculando os primeiros **N** primos sendo
 Como pode ser visto o melhor método de otimização de compilação foi o ______ ....
 
 
+Foi pedido que usássemos o *gprof* nesses dois códigos e foram obtidos os seguintes resultados:
+######Obs: O experimento do *gprof* por motivos de organização se encontra em "programa3"
+* [Log *gprof* da compilação com um arquivo](src/programa3/bin/analysisEX1.txt)
+* [Log *gprof* da compilação com dois arquivos](src/programa3/bin/analysisEX2.txt)
+
+

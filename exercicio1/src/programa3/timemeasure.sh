@@ -15,7 +15,6 @@ if [ $# -eq 0 ]
 fi
 
 
-
 for file in $1/*.exe
 do
 	echo "Starting $file ..."
@@ -28,6 +27,6 @@ do
 	  (time ./"$file" $4;) 2>&1 | grep real >> "$2/$FILENAME".log
 	done
 	
-	(awk '/m[0-9]/{sum += strtonum(substr($2, 3, 5));cnt++} END {print "Avarage:  " sum/cnt "s"}' "$2/$FILENAME".log ) >> "$2/$FILENAME".log
+	(awk '/m[0-9]/{sum += strtonum(substr($2, 3, 5));cnt++} END {print "Average:  " sum/cnt "s"}' "$2/$FILENAME".log ) >> "$2/$FILENAME".log
 	
 done

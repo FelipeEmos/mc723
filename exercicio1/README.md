@@ -70,5 +70,8 @@ Foi pedido também que usássemos o *gprof* nesses dois códigos e foram obtidos
 
 O LOG nos mostra que praticamente 100% do tempo foi gasto dentro da função primo. Isso era esperado.
 
+Uma ultima otimização que é requisitada é a de percorrer apenas números ímpares para procurar os primos, este programa está em ["programa3"](src/programa3)
+* Compilando o programa em um arquivo temos tempo de execução de [1.2683s](log/programa3/EX1_primo.log)
+* Compilando o programa em dois arquivos separados temos tempo de execução de [1.2672s](log/programa3/EX2_primo_Linking.log)
 
 ##Minhas otimizações

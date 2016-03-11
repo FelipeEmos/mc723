@@ -58,9 +58,9 @@ Após os testes com o programa dado foi pedida a modificação do código:
 > Modifique seu programa para calcular quantos números primos existem entre 1 e n, seguindo o mesmo algoritmo utilizado, modificando apenas a função main e fazendo com que n seja um parâmetro passado por linha de comando.
 
 ######Obs: Este novo código é chamado nos arquivos de ["programa2"](src/programa2)
-Como pedido foram feitos experimentos calculando os primeiros **N** primos sendo **N** um número grande, foi usado arbitrariamente **N=10.000**.
-* Compilando o programa em um arquivo temos tempo de execução de [1.2437s](log/programa2/EX1_primo.log)
-* Compilando o programa em dois arquivos separados temos tempo de execução de [1.4176s](log/programa2/EX2_primo_Linking.log)
+Como pedido foram feitos experimentos calculando os primeiros **N** primos sendo **N** um número grande, foi usado arbitrariamente **N=100.000**.
+* Compilando o programa em um arquivo temos tempo de execução de [1.15295s](log/programa2/EX1_primo.log)
+* Compilando o programa em dois arquivos separados temos tempo de execução de [1.15085s](log/programa2/EX2_primo_Linking.log)
 </br></br>
 Como pode ser visto o melhor método de otimização de compilação foi o de compilação separada. Este resultado, assim como o último, não era esperado.
 
@@ -71,10 +71,10 @@ Foi pedido também que usássemos o *gprof* nesses dois códigos e foram obtidos
 O LOG nos mostra que praticamente 100% do tempo foi gasto dentro da função primo. Isso era esperado.
 
 Uma ultima otimização que é requisitada é a de percorrer apenas números ímpares para procurar os primos, este programa está em ["programa3"](src/programa3)
-* Compilando o programa em um arquivo temos tempo de execução de [1.2447s](log/programa3/EX1_primo.log)
-* Compilando o programa em dois arquivos separados temos tempo de execução de [1.3126s](log/programa3/EX2_primo_Linking.log)
+* Compilando o programa em um arquivo temos tempo de execução de [1.1528s](log/programa3/EX1_primo.log)
+* Compilando o programa em dois arquivos separados temos tempo de execução de [1.28155s](log/programa3/EX2_primo_Linking.log)
 
-Era esperada uma melhora significativa do "programa3" para o "programa2", mas isso não foi observado, apenas com a compilação em arquivos separados houve um ganho de menos de 8% de eficiência, pois na compilação com um único arquivo obteve-se nenhum ganho.
+Era esperada uma melhora significativa do "programa3" para o "programa2", mas isso não foi observado. Estranhamente 
 
 
 

@@ -19,7 +19,6 @@ int main(int argc, char const *argv[])
 	#pragma omp parallel for   \
 	default(shared) private(i) \
     reduction(+:count) 
-	
 	for (i = 3; i < n; i+=2)
 	{
 		if (primo(i)){

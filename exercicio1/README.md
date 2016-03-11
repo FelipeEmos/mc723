@@ -110,12 +110,12 @@ Agora sim houve um grande ganho de desempenho, da ordem de 58 %. Isto é esperad
 4. O que é "depurar um programa"?
 	* Depurar um programa é entender o seu funcionamento, o seu fluxo de execução, com a intenção de encontrar "defeitos", "bugs".
 5. Como executar o GDB?
-	* Você deve executar o seu executável com a palavra chave *gdb* antes: ** > gdb exemplo.exe **. Uma vez iniciado é só usar as ferramentas do gdb de *breakpoints*, *step by step*, dentre outras para entender o fluxo de execução de seu programa e possivelmente descobrir um "bug"
+	* Você deve executar o seu executável com a palavra chave *gdb* antes: _$ gdb exemplo.exe_ . Uma vez iniciado é só usar as ferramentas do gdb de *breakpoints*, *step by step*, dentre outras para entender o fluxo de execução de seu programa e possivelmente descobrir um "bug"
 6. Como utilizar um ambiente gráfico com o GDB?
 	* Existem alguns visualizadores, um deles é o *ddd* e ele funciona de maneira muito parecida com a versão não gráfica do programa: o *gdb*
 7. Como descobrir a parte que é mais executada de um programa?
 	* Você pode compilar o seu código com a tag do *gprof* **"-pg"** e em seguida extrair o log *grpof* do seu código. Esse log mostra quanto tempo foi gasto em cada função de seu programa.
 8. Como utilizar o gprof?
-	* Basta compilar o seu código com a tag do *gprof* **"-pg"** e em seguida extrair o log *grpof* do seu código com o comando **> grpof exemplo.exe gmon.out > meulog.txt**. Esse log mostra quanto tempo foi gasto em cada função de seu programa.
+	* Basta compilar o seu código com a tag do *gprof* **"-pg"** e em seguida extrair o log *grpof* do seu código com o comando *$ grpof exemplo.exe gmon.out > meulog.txt*. Esse log mostra quanto tempo foi gasto em cada função de seu programa.
 9. Como fazer com que um programa tire proveito de multiprocessamento de forma escalável?
 	* Uma ótima ferramenta para multiprocessamento é o [*OMP*](https://computing.llnl.gov/tutorials/openMP/). Uma grande vantagem do *OMP* que outras ferramentas multithreading como o *pthread* não tem é que a escolha da forma de paralelização não é feita em tempo de criação de código, no *OMP* o código é "inteligente" o suficiente para decidir em tempo de execução os detalhes da paralelização. Ele vê quantos "cores" existem na máquina e assim decide quantas threads ele irá utilizar. Esta *feature* é fundamental para a escalabilidade do multithreading, pois seu programa deve ser confiável e rápido no maior número de computadores possível.

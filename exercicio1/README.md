@@ -26,20 +26,26 @@ Primeiramente é importante descobrir os melhores parâmetros para serem colocad
 * Quando compilado com a tag "-O1" gastou [0.26052s](log/programa1/EX5_primo_O1.log)
 * Quando compilado com a tag "-O2" gastou [0.28672s](log/programa1/EX6_primo_O2.log)
 * Quando compilado com a tag "-O3" gastou [0.28636s](log/programa1/EX7_primo_O3.log)
-</br></br>
+
+
+
 Como pode ser visto o melhor método de otimização de compilação foi com a tag "-O1", gastando 0.2681s.
 </br>Outra forma de otimização é o uso do parâmetro "-mtune": você pode configurar o compilador gcc para gerar um executável otimizado para um grande escopo de máquinas (que usa instruções de processadores IA32/AMD64/EM64T) com o parâmetro "-mtune=generic" ou configurar o compilador para gerar código executável otimizado para um processador específico, por exemplo: "-mtune=i386". Outra possibilidade é compilar com o parâmetro "-mtune=native", isso fará o gcc descobrir **em tempo de compilação** o processador da máquina atual, também gerando executável específico. Vale ressaltar o trivial: um binário específico para um processador não funcionará em processadores que não tem aquele subconjunto de instruções de otimização.
 </br></br>
 * (Repetindo informação) O programa fornecido na página do exercício, "primo.c", quando compilado no gcc sem "tags" adicionais gastou [0.29834s](log/programa1/EX1_primo.log)
 * Quando compilado com o parâmetro "-mtune=native" gastou [0.31138s](log/programa1/EX2_primo_mtune_native.log)
 * Quando compilado com o parâmetro "-mtune=generic" gastou [0.29978s](log/programa1/EX3_primo_mtune_generic.log)
-</br></br>
+
+
+
 Como pode ser visto o melhor método de otimização de compilação foi, por uma diferença muito pequena, a compilação com o parâmetro "-mtune=generic". Isto é de certa forma contra intuitivo porque o código com instruções nativas ficou mais lento.
 </br>Mais uma ideia proposta para otimização foi quebrar o programa inicial "primo.c" em dois arquivos separados "main.c" e "calc_primo.c", compilá-los separadamente e depois ligá-los em um executável.
 </br></br>
 * (Repetindo informação) O programa fornecido na página do exercício, "primo.c", quando compilado no gcc sem "tags" adicionais gastou [0.29834s](log/programa1/EX1_primo.log)
 * O programa gerado com ligamento separado dos dois arquivos gastou [0.25756s](log/programa1/EX8_primo_Linking.log)
-</br></br>
+
+
+
 Como pode ser visto o melhor método de otimização de compilação foi o de compilação separada. O último resultado não era esperado. Era esperado que em apenas um arquivo fonte o compilador conseguisse usar técnicas de otimização mais facilmente, as chamadas [Interprocedural Optimization(IPO)](https://en.wikipedia.org/wiki/Interprocedural_optimization):
 
 > Inlining </br>
@@ -74,8 +80,24 @@ Uma ultima otimização que é requisitada é a de percorrer apenas números ím
 * Compilando o programa em um arquivo temos tempo de execução de [1.1528s](log/programa3/EX1_primo.log)
 * Compilando o programa em dois arquivos separados temos tempo de execução de [1.28155s](log/programa3/EX2_primo_Linking.log)
 
-Era esperada uma melhora significativa do "programa3" para o "programa2", mas isso não foi observado. Estranhamente 
+Era esperada uma melhora significativa do "programa3" para o "programa2", mas isso não foi observado. Estranhamente houve inclusive uma queda de performance na compilação de arquivos separados.
 
+Por fim tivemos que paralelizar o código e, usando a ferramenta [OMP](https://computing.llnl.gov/tutorials/openMP/) paralelizei o laço que testa os números primos e obtive bons resultados.
+> Trecho paralelizado do [programa4](src/programa4)
+```javascript
+#pragma omp parallel for   \
+default(shared) private(i) \
+reduction(+:count) 
+for (i = 3; i < n; i+=2){
+		if (primo(i)){
+			count++;
+	}
+}
+```
 
+* Compilando o programa em um arquivo temos tempo de execução de [0.5756s](log/programa4/EX1_primo.log)
+* Compilando o programa em dois arquivos separados temos tempo de execução de [0.53205s](log/programa4/EX2_primo_Linking.log)
+ 
+Agora sim houve um grande ganho de desempenho, da ordem de 58 %. Isto é esperado dado que os computadores do instituto de computação são multicore e com multithreading é possível aproveitar bem melhor a capacidade de processamento.
 
 ##Minhas otimizações

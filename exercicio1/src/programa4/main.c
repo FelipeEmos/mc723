@@ -12,15 +12,20 @@ int main(int argc, char const *argv[])
 
 	n = atoi(argv[1]);
 	count = 0;
-
+	
 	if( n >= 2)
 		count++;
-
+	
+	#pragma omp parallel for   \
+	default(shared) private(i) \
+    reduction(+:count) 
+	
 	for (i = 3; i < n; i+=2)
 	{
 		if (primo(i)){
 			count++;
 		}
 	}
+	
 	printf("%d\n", count);
 }

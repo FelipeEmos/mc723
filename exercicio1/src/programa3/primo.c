@@ -22,17 +22,16 @@ int main(int argc, char const *argv[])
 
   n = atoi(argv[1]);
   count = 0;
+  
+  if( n >= 2)
+	count++;
 
-  printf("%d é primo.\n", 2);
-  count++;
-
-  for (i = 3; count < n; i+=2)
+  for (i = 3; i < n; i+=2)
   {
     if (primo(i)){
-      printf("%d é primo.\n", i);
       count++;
     }
-    else
-      printf("%d não é primo.\n", i);
   }
+  
+  printf("%d\n", count);
 }

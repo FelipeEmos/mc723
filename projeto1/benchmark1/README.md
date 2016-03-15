@@ -45,7 +45,7 @@ Agora, podemos medir as performenças executando o seguinte comando :
 Para medir o tempo de execução, usamos este comando :   
 ```time ./ImageMagick/bin/convert big.png -resize 5% little.png```
 Podemos fazer uma media de umas 10 dessa medida, para ter um valor mais certo.
-No computador em que testamos, demorou em media ```12.158 secundos```.
+No computador em que testamos, demorou em media ```12.425 secundos```.
 
 
 ## Como apresentar o desempenho

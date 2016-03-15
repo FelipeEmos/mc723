@@ -3,20 +3,50 @@
 ## O que faz? Para que serve?
 O programa irá testar um benchmarking de processamento de imagens. Esse benchmark envolve: manipulação de arquivos, multithreading, tempo de processamento.
 
-## Por que Ã© bom para medir desempenho?
-Que tipo de atividade ele estÃ¡ medindo? Somente desempenho do processador? Desempenho do disco? Algo mais? Processador single-core, multi-core?
+O ImageMagick permite fazer muitas manipulações de imagens, tais que convertir de um formato para um outro, reduzir o tamanho, compressar, fazer uma rotação, aplicar um filtro... Essas operações são executadas com multithreading, e podem demorar muito se o arquivo de entrada seja pesado e/ou se as manipulações aplicadas forem pesadas. 
+
+## Por que é bom para medir desempenho?
+Esse programa é bom para medir o desempenho de um computador porque ele mexe com arquivos (podemos medir o desempenho do disco), com multithreading, e pode ter um tempo de execução suficiente para ter uma medida confiavel. 
 
 ## O que baixar
-Onde pode ser baixado o cÃ³digo fonte dele. NÃ£o Ã© permitido utilizar nenhum versÃ£o jÃ¡ instalada nos computadores.
+O codigo fonte do ImageMagick pode ser achado nesse site :     
+www.imagemagick.org/download/ImageMagick.tar.gz
 
 ## Como compilar/instalar
-O programa deverÃ¡ ser instalado no computador, compilado localmente. NÃ£o deixar o binÃ¡rio disponÃ­vel. NÃ£o deve ser necessÃ¡rio instalar como administrador do computador (root)
+Para compilar o ImageMagick, seguir as seguintes etapas : 
 
+Unpack the distribution with this command:
+``tar xvzf ImageMagick.tar.gz``
+
+Next configure and compile ImageMagick:
+```
+ cd ImageMagick-6.9.3
+ ./configure --prefix=/home/.../directory --disable-installed
+ make
+ make install
+ ```
+ 
 ## Como executar
-InstruÃ§Ãµes para execuÃ§Ã£o. Se seu programa precisa de entradas, vocÃª deve fornece-las para que todos executem corretamente.
+Para executar o programa, é só ir no arquivo indicado depois de ``--prefix=``, e executar :   
+```./ImageMagick/bin/convert in.png [options] out.png```
 
 ## Como medir o desempenho
 Como que o desempenho Ã© medido atravÃ©s deste programa? Se for atravÃ©s de tempo, vocÃª deve especificar claramente qual tempo deverÃ¡ ser utilizado e indicar o motivo aqui. Quantas vezes a medida deverÃ¡ ser feita? O que fazer com ela (mÃ©dia, etc) ? NÃ£o especificar o tempo serÃ¡ considerado falha grave.
+
+Para medir o desempenho através deste programa, vamos primeiro baixar uma imagem de 106MB, com a qual vamos rodar o programa.
+Por isso, basta executar o seguinte comando, e esperar que baixe :  
+```wget http://eoimages.gsfc.nasa.gov/images/imagerecords/73000/73726/world.topo.bathy.200406.3x21600x21600.A2.png```   
+Mudamos o nome da imagem com esse comando, para deixar os comandos seguintes mais simples :   
+```mv world.topo.bathy.200406.3x21600x21600.A2.png big.png```   
+
+Agora, podemos medir as performenças executando o seguinte comando :
+```./ImageMagick/bin/convert big.png -resize 5% little.png```
+
+Para medir o tempo de execução, usamos este comando :   
+```time ./ImageMagick/bin/convert big.png -resize 5% little.png```
+Podemos fazer uma media de umas 10 dessa medida, para ter um valor mais certo.
+No computador em que testamos, demorou em media ```12.158 secundos```.
+
 
 ## Como apresentar o desempenho
 Como o desempenho deverÃ¡ ser mostrado. Margem de erro, etc. 

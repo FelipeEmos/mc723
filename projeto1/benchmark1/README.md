@@ -35,8 +35,8 @@ Como que o desempenho foi medido através deste programa? Se for através de tem
 
 Para medir o desempenho através deste programa vamos fazer medições "perf stat-B **command**" com as seguintes operações:
 * Gerar uma imagem 5000x5000 pixels com *noise* aleatório
-* Aplicar um filtro de distorção:
-</br>Ex:</br> ![Example of filter](http://www.imagemagick.org/Usage/canvas/tile_distort_polar.gif)
+* Aplicar um filtro de blur:
+</br>Ex:</br> ![Original Image](http://www.imagemagick.org/Usage/canvas/random.png) ![Blured Image](http://www.imagemagick.org/Usage/canvas/random_10.png)
 * Gerar uma imagem 5000x5000 pixels com o seguinte padrão que está imbutido no software:
 </br></br> ![Plasma Pathern](http://www.imagemagick.org/Usage/canvas/plasma_seeded.jpg)
 * Aplicar o mesmo filtro de distorção anterior

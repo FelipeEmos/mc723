@@ -31,13 +31,15 @@ Para executar o programa, é só ir no arquivo indicado depois de ``--prefix=``,
 ```./ImageMagick/bin/convert in.png [options] out.png```
 
 ## Como medir o desempenho
-Como que o desempenho Ã© medido atravÃ©s deste programa? Se for atravÃ©s de tempo, vocÃª deve especificar claramente qual tempo deverÃ¡ ser utilizado e indicar o motivo aqui. Quantas vezes a medida deverÃ¡ ser feita? O que fazer com ela (mÃ©dia, etc) ? NÃ£o especificar o tempo serÃ¡ considerado falha grave.
+Como que o desempenho foi medido através deste programa? Se for através de tempo, você deve especificar claramente qual tempo deveria ser utilizado e indicar o motivo aqui. Quantas vezes a medida deveria ser feita? O que fazer com ela (média, etc) ? Não especificar o tempo seria considerado falha grave.
 
-Para medir o desempenho através deste programa, vamos primeiro baixar uma imagem de 106MB, com a qual vamos rodar o programa.
-Por isso, basta executar o seguinte comando, e esperar que baixe :  
-```wget http://eoimages.gsfc.nasa.gov/images/imagerecords/73000/73726/world.topo.bathy.200406.3x21600x21600.A2.png```   
-Mudamos o nome da imagem com esse comando, para deixar os comandos seguintes mais simples :   
-```mv world.topo.bathy.200406.3x21600x21600.A2.png big.png```   
+Para medir o desempenho através deste programa vamos fazer medições "perf stat-B **command**" com as seguintes operações:
+* Gerar uma imagem 5000x5000 pixels com *noise* aleatório
+* Aplicar um filtro de distorção:
+</br>Ex:</br> ![Example of filter](http://www.imagemagick.org/Usage/canvas/tile_distort_polar.gif)
+* Gerar uma imagem 5000x5000 pixels com o seguinte padrão que está imbutido no software:
+</br></br> ![Plasma Pathern](http://www.imagemagick.org/Usage/canvas/plasma_seeded.jpg)
+* Aplicar o mesmo filtro de distorção anterior
 
 Agora, podemos medir as performenças executando o seguinte comando :
 ```./ImageMagick/bin/convert big.png -resize 5% little.png```
@@ -53,3 +55,12 @@ Como o desempenho deverÃ¡ ser mostrado. Margem de erro, etc.
 
 ## MediÃ§Ãµes base (uma mÃ¡quina)
 Inclua a especificaÃ§Ã£o dos componentes relevantes e os resultados de desempenho.
+
+
+
+#Deprecated STUFF
+Por isso, basta executar o seguinte comando, e esperar que baixe :  
+```wget http://eoimages.gsfc.nasa.gov/images/imagerecords/73000/73726/world.topo.bathy.200406.3x21600x21600.A2.png```   
+Mudamos o nome da imagem com esse comando, para deixar os comandos seguintes mais simples :   
+```mv world.topo.bathy.200406.3x21600x21600.A2.png big.png```   
+

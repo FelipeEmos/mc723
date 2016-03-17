@@ -13,6 +13,9 @@ O codigo fonte do ImageMagick pode ser achado nesse site :
 www.imagemagick.org/download/ImageMagick.tar.gz
 
 ## Como compilar/instalar
+Na maioria dos computadores de distribuição Linux o ImageMagick já vem instalado. Para verificar utilize o comando *display*. As instruções a seguir são para caso você não tenha o software e deseja compilá-lo. Vale dizer que os comandos utilizados no nosso benchmark utilizam os "paths" padronizados do software como se ele viesse imbutido na distribuição Linux.
+
+
 Para compilar o ImageMagick, seguir as seguintes etapas : 
 
 Unpack the distribution with this command:
@@ -27,6 +30,8 @@ Next configure and compile ImageMagick:
  ```
  
 ## Como executar
+Se você já tem o ImageMagick instalado na sua distribuição Linux basta colocar no terminal as palavras chaves de comando. Referências de comando no seguinte [link](http://www.imagemagick.org/script/command-line-processing.php) e na bibliografia ao final do relatório
+
 Para executar o programa, é só ir no arquivo indicado depois de ``--prefix=``, e executar :   
 ```./ImageMagick/bin/convert in.png [options] out.png```
 
@@ -56,6 +61,11 @@ Como o desempenho deverÃ¡ ser mostrado. Margem de erro, etc.
 ## MediÃ§Ãµes base (uma mÃ¡quina)
 Inclua a especificaÃ§Ã£o dos componentes relevantes e os resultados de desempenho.
 
+##Fontes de pesquisa
+* http://www.imagemagick.org/Usage/canvas/#random_specks
+* http://www.imagemagick.org/Usage/canvas/#random_blur
+* http://www.imagemagick.org/Usage/canvas/#plasma_seeded
+* http://www.imagemagick.org/script/command-line-processing.php
 
 
 #Deprecated STUFF

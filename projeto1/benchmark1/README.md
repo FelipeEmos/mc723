@@ -18,10 +18,10 @@ Na maioria dos computadores de distribuição Linux o ImageMagick já vem instal
 
 Para compilar o ImageMagick, seguir as seguintes etapas : 
 
-Unpack the distribution with this command:
+Extraia o arquivo com o comando:
 ``tar xvzf ImageMagick.tar.gz``
 
-Next configure and compile ImageMagick:
+Em seguida configure e compile o ImageMagick:
 ```
  cd ImageMagick-6.9.3
  ./configure --prefix=/home/.../directory --disable-installed
@@ -46,20 +46,20 @@ Para medir o desempenho através deste programa vamos fazer medições "perf sta
 </br></br> ![Plasma Pathern](http://www.imagemagick.org/Usage/canvas/plasma_seeded.jpg)
 * Aplicar o mesmo filtro de distorção anterior
 
-Agora, podemos medir as performenças executando o seguinte comando :
-```./ImageMagick/bin/convert big.png -resize 5% little.png```
-
-Para medir o tempo de execução, usamos este comando :   
-```time ./ImageMagick/bin/convert big.png -resize 5% little.png```
-Podemos fazer uma media de umas 10 dessa medida, para ter um valor mais certo.
-No computador em que testamos, demorou em media ```12.425 secundos```.
-
+`Obs:` Propõe-se criar uma pasta tmp caso não exista pois as imagens geradas serão de considerável tamanho e poderão preencher o disco desnecessariamente.
 
 ## Como apresentar o desempenho
-Como o desempenho deverÃ¡ ser mostrado. Margem de erro, etc. 
+O desempenho será medido através do comando perf stat-B, o qual irá gerar um log par cada execução com informações pertinentes ao benchmark.
+Para apresentar o desempenho basta executar o shell script ``benchmark.sh``. Nele será criada uma pasta tmp caso não exista para irá gerar as imagens nela
+e irá gerar uma pasta log onde os resultados do perf stat-B serão colocados.
 
-## MediÃ§Ãµes base (uma mÃ¡quina)
-Inclua a especificaÃ§Ã£o dos componentes relevantes e os resultados de desempenho.
+Em cada log gerado haverá uma lista com dados retirados do comando. Dentre elas serão pertinentes os resultados:
+ * task-clock 			- representa uma média do número de CPUs utilizadas ao longo do tempo, havendo uma paralelização caso esse número seja maior do que 1.
+ * cycles 				- calcula a frequência dos ciclos da máquina durante a execução.
+ * instructions 		- mede o número de instruções por ciclo da máquina.
+ * tempo de execução - representado pela última linha.
+
+## Medições base (uma máquina)
 
 ##Fontes de pesquisa
 * http://www.imagemagick.org/Usage/canvas/#random_specks

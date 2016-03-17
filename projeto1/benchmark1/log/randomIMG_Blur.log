@@ -1,0 +1,16 @@
+
+ Performance counter stats for 'convert /tmp/bench/randomIMG.png -virtual-pixel tile -blur 0x10 -auto-level /tmp/bench/randomIMG_Blur.png':
+
+      58582.010697      task-clock (msec)         #    1.655 CPUs utilized          
+             8,284      context-switches          #    0.141 K/sec                  
+               165      cpu-migrations            #    0.003 K/sec                  
+           417,226      page-faults               #    0.007 M/sec                  
+   155,673,871,839      cycles                    #    2.657 GHz                    
+   <not supported>      stalled-cycles-frontend  
+   <not supported>      stalled-cycles-backend   
+   216,303,509,023      instructions              #    1.39  insns per cycle        
+    29,191,291,526      branches                  #  498.298 M/sec                  
+     1,073,712,062      branch-misses             #    3.68% of all branches        
+
+      35.391922503 seconds time elapsed
+

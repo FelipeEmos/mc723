@@ -6,6 +6,9 @@
 if [ ! -d "log" ]; then
   mkdir "log"
 fi
+if [ ! -d "/tmp/bench" ]; then
+  mkdir "/tmp/bench"
+fi
 echo " * Generating random image 5000x5000"
 (perf stat -B convert -size 5000x5000 xc:   +noise Random   /tmp/bench/randomIMG.png ) 2> log/randomIMG.log
 echo " * Applying filter on random image 5000x5000"

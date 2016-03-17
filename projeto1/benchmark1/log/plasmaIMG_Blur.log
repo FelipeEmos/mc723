@@ -1,0 +1,16 @@
+
+ Performance counter stats for 'convert /tmp/bench/plasmaIMG.png -virtual-pixel tile -blur 0x10 -auto-level /tmp/bench/plasmaIMG_Blur.png':
+
+     147357.094700      task-clock (msec)         #    1.334 CPUs utilized          
+            18,734      context-switches          #    0.127 K/sec                  
+               376      cpu-migrations            #    0.003 K/sec                  
+           407,249      page-faults               #    0.003 M/sec                  
+   391,708,376,751      cycles                    #    2.658 GHz                    
+   <not supported>      stalled-cycles-frontend  
+   <not supported>      stalled-cycles-backend   
+   451,275,313,430      instructions              #    1.15  insns per cycle        
+    75,077,823,335      branches                  #  509.496 M/sec                  
+     2,013,092,195      branch-misses             #    2.68% of all branches        
+
+     110.489788182 seconds time elapsed
+

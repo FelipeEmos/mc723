@@ -1,0 +1,16 @@
+
+ Performance counter stats for 'convert -size 5000x5000 plasma:fractal /tmp/bench/plasmaIMG.png':
+
+     126526.312334      task-clock (msec)         #    1.009 CPUs utilized          
+            13,294      context-switches          #    0.105 K/sec                  
+               215      cpu-migrations            #    0.002 K/sec                  
+            49,459      page-faults               #    0.391 K/sec                  
+   336,379,112,021      cycles                    #    2.659 GHz                    
+   <not supported>      stalled-cycles-frontend  
+   <not supported>      stalled-cycles-backend   
+   348,623,737,899      instructions              #    1.04  insns per cycle        
+    76,345,929,627      branches                  #  603.400 M/sec                  
+     1,876,594,246      branch-misses             #    2.46% of all branches        
+
+     125.416143765 seconds time elapsed
+

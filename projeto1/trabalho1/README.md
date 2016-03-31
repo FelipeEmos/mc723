@@ -10,7 +10,7 @@ Outro conceito importante de se ter em mente é a preocupação com medições a
 
 ##Criando um benchmark (Parte 1)
 Nessa primeira parte do projeto fomos separados em grupos de 3 pessoas e foi pedido que criássemos um benchmark para, mais tarde, comapararmos as capacidades de desempenho dos computadores do instituto de computação e de algumas máquinas pessoais de alguns alunos. </br>
-O benchmark do meu grupo (ImageMagick) pode ser encontrado nesse mesmo repositório, basta navegar pelo [sumário]().
+O benchmark do meu grupo (ImageMagick) pode ser encontrado nesse mesmo repositório, basta navegar pelo [sumário](https://github.com/FelipeEmos/mc723).
 Os benchmarks dos outros grupos também estão em repositórios publicos e seus links podem ser encontrados na página do [exercício](http://www.ic.unicamp.br/~lucas/teaching/mc723/2016-1/p1.html).
 
 ##Medindo os desempenhos (Parte 2)
@@ -20,14 +20,8 @@ Nessa segunda parte fomos novamente divididos em grupos, só que de tal forma qu
  3.  Benchmark 6 - ImageMagick
  
 
+Aplicamos os 3 benchmarks em cima de 3 máquinas diferentes e os dados dessas medições pode ser encontrado na seguinte [planilha](https://docs.google.com/spreadsheets/d/1qFhDX_s1gsIl7PeIimqz-Qh4VMi9qASxFH5sLqxjveA/edit?usp=sharing).
 
+######Obs: Os dados dessa planilha são os mesmos da planilha da disciplina, porém em uma formatação diferente.
 
-######Obs: Este novo código é chamado nos arquivos de ["programa2"](src/programa2)
-Como pedido foram feitos experimentos calculando os primeiros **N** primos sendo **N** um número grande, foi usado arbitrariamente **N=100.000**.
-* Compilando o programa em um arquivo temos tempo de execução de [1.15295s](log/programa2/EX1_primo.log)
-* Compilando o programa em dois arquivos separados temos tempo de execução de [1.15085s](log/programa2/EX2_primo_Linking.log)
-</br></br>
-Como pode ser visto o melhor método de otimização de compilação foi o de compilação separada. Este resultado, assim como o último, não era esperado.
-
-##Conclusão
-Algumas das otimizações da teoria não foram bem sucedidas nos meus experimentos, entretanto em outros casos foi possível ver grandes diferenças de tempo nas otimizações esperadas: no compilador (**-O2** no meu caso foi o melhor parâmetro) e no multithreading. O ganho de tempo de um código do programa3 sem otimizações em dois arquivos ([1.28155s](log/programa3/EX2_primo_Linking.log)) para um código do programa4 com otimização **"-O2"**, multithreading e em um único arquivo ([0.50135s](log/programa4/EX2_primo_Linking.log)) é de 60.9%!
+##Analisando os dados (Parte 3)

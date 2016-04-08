@@ -46,10 +46,18 @@ Agora que costatamos o resultado da indepenência das caches podemos escolher um
 Para o experimeto 2 foi medido o "miss rate" de instruções, fixamos a cache de dados em **64kB** e variamos apenas a cache de instruções no espaço amostral:
 **{ 16kB, 32kB, 64kB, 128kB, 256kB, 512kB, 1024kB, 2048kB, 4096kB }**
 
-Para visualizar o gráfico e tabela utilize este [link](TODO).
+Para visualizar o gráfico e a tabela utilize este [link](https://docs.google.com/spreadsheets/d/1Gm2mQX_9o-HkHuCBDrMokgIBZVeEWD8B0BO4D3mI9eo/edit?usp=sharing).
 
 ##[Experimento 3](experiment3) - L1 de dados
 Para o experimeto 3 foi medido o "miss rate" de dados, fixamos a cache de instruções em **64kB** e variamos apenas a cache de dados no espaço amostral:
 **{ 16kB, 32kB, 64kB, 128kB, 256kB, 512kB, 1024kB, 2048kB, 4096kB }**
 
-Para visualizar o gráfico e tabela utilize este [link](TODO).
+Para visualizar o gráfico e a tabela utilize este [link](https://docs.google.com/spreadsheets/d/1Gm2mQX_9o-HkHuCBDrMokgIBZVeEWD8B0BO4D3mI9eo/edit?usp=sharing).
+
+##Conclusão
+Foi observado pelos dados coletados que a partir de um certo ponto o aumento de tamanho da cache deixa de influenciar tanto assim na taxa de acerto. Se for levado em conta que a escala horizontal mostrada nos gráficos é logarítmica temos que o efeito é ainda mais surpreendente. Resumindo existe um ponto em que deixa de valer a pena aumentar o tamanho de uma cache! Outro princípio que pesa positivamente para essa conclusão é que quanto maior uma cache maior tende a ser o seu tempo de acesso. Idealmente o ponto de parada pode ser calculado como o ponto em que o ganho de desempenho médio tende a zero, ou seja, o ganho de mais acertos para de compensar o tempo de desempenho perdido por acertar a cache no caso médio.
+
+Não foram feitas medições da perda de desempenho no tamanho de cache. O "critério de parada" de aumento de cache nesse exercício é a pura análise qualitativa dos gráficos. Assim sendo foi escolhido como tamanho ideal de cache, com base nos gráficos:
+
+L1 de instruções = 516Kb
+L1 de dados = 128kB

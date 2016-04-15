@@ -9,3 +9,4 @@
 * (18/03) - Projeto 1, parte 2 (planilha) - Nothing at github
 * (18/03) - Projeto 1, parte 3 (relatorio) - [projeto1/trabalho1](projeto1/trabalho1)
 * (01/04) - Exercicio 2 - [exercicio2](exercicio2)
+* (08/04) - Exercicio 3 - [exercicio3](exercicio3)

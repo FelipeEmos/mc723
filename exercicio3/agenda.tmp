@@ -1,0 +1,5 @@
+Linhas de comando para execucao & configuracao do simulador
+vim programs/hello.c
+mips-newlib-elf-gcc -specs=archc programs/hello.c -o programs/hello.mips
+./mips.x --load=programs/hello.mips 2> mylog.log
+vim mylog.log

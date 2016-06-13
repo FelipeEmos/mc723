@@ -49,5 +49,87 @@ int main(){
 }
 ```
 
+##Plataforma Multicore
+O próximo passo é modificar as configurações do simulador indicando que queremos simular uma plataforma multicore. Foi necessário alterar os arquivos main.cpp, para inicializar dois processadores, e mips_isa.cpp, para garantir as duas stacks diferentes (para que não ocorra colisão de variáveis nas chamadas de função). Nessas modificações foi seguido o [material de apoio](content/material_apoio.pdf). A modificação no main.cpp é muito bem descrita no material de apoio. Já a modificação do mips_isa.cpp descrita no material de apoio não precisa ser feita em sua integridade, pois o simulador disponibilizado para download fornecido neste exercício já apresenta o código de recorte da RAM nas diferentes stacks, o que deve ser modificado é o tamanho da stack (que não pode ser muito grande porque a RAM atual é pequena). Foram usadas stacks de tamanho 128kB e isto resolveu um bug. Outra alternativa seria mudar o tamanho da RAM.
+
+Para testar o multicore foir feito um programa chamado **mediavetor.c** que, a partir de um vetor de números inteiros, calcula a soma e a média dos mesmos. O uso do multiprocessamento está no fato que um processador soma metade do vetor e o outro processador soma a outra metade. O log desse programa para um vetor com tamanho **N**=20000 pode ser visto a seguir:
+###Multithread **N** = 20000
+```javascript
+ArchC: Reading ELF application file: myprogs/mediavetor.mips
+ArchC: -------------------- Starting Simulation --------------------
+ArchC: Reading ELF application file: myprogs/mediavetor.mips
+ArchC: -------------------- Starting Simulation --------------------
+
+Vetor de tamanho [20000] inicializado: { 0, 2, 4, 6, ..., 39996, 39998 }
+Processor number 0 summed from index 0 to 10000 and got: 299990000
+ArchC: -------------------- Simulation Finished --------------------
+Processor number 1 summed from index 10000 to 20000 and got: 99990000
+Soma vale: 399980000
+Media vale: 19999
+ArchC: -------------------- Simulation Finished --------------------
+Info: /OSCI/SystemC: Simulation stopped by user.
+ArchC: Simulation statistics
+    Times: 0.03 user, 0.00 system, 0.04 real
+    Number of instructions executed: 152546
+    Simulation speed: (too fast to be precise)
+ArchC: Simulation statistics
+    Times: 0.03 user, 0.00 system, 0.04 real
+    Number of instructions executed: 168014
+    Simulation speed: (too fast to be precise)
+```
+
+Com o trabalho dividido pela metade tivemos desempenho de 0.03 segundos de tempo de usuário. O log de uma modificação desse código para a não divisão de trabalho pode ser visto a seguir:
+
+###Singlethread **N** = 20000
+```javascript
+ArchC: Reading ELF application file: myprogs/mediavetorSingleThread.mips
+ArchC: -------------------- Starting Simulation --------------------
+Vetor de tamanho [20000] inicializado: { 0, 2, 4, 6, ..., 39996, 39998 }
+Processor number 0 summed from index 0 to 20000 and got: 399980000
+ArchC: -------------------- Simulation Finished --------------------
+
+Info: /OSCI/SystemC: Simulation stopped by user.
+ArchC: Simulation statistics
+    Times: 0.03 user, 0.00 system, 0.04 real
+    Number of instructions executed: 202544
+    Simulation speed: (too fast to be precise)
+```
+
+A diferença é imperceptível! Isto é muito longe do esperado, este fenômeno ocorre porquê o experimento é muito rápido e a parte paralelizável não ocupa tempo significativo para fazer diferença *"Simulation speed: (too fast to be precise)"*, aumentando o tamanho do vetor a diferença deve ficar perceptível! O **drawback** é que a soma dos vetores vai fazer overflow nos inteiros, então fica a nota de que os próximos valores de soma e média não serão realistas, entretanto o paralelismo irá se mostrar mais eficaz.
+
+###Multithread **N** = 100000000
+```javascript
+ArchC: Reading ELF application file: myprogs/mediavetor.mips
+ArchC: -------------------- Starting Simulation --------------------
+Vetor de tamanho [1000000] inicializado: { 0, 2, 4, 6, ..., 1999996, 1999998 }
+Processor number 0 summed from index 0 to 500000 and got: -1619776800
+ArchC: -------------------- Simulation Finished --------------------
+Processor number 1 summed from index 500000 to 1000000 and got: 891396832
+Soma vale: -728379968
+Media vale: -728
+ArchC: -------------------- Simulation Finished --------------------
+Info: /OSCI/SystemC: Simulation stopped by user.
+ArchC: Simulation statistics
+    Times: 0.72 user, 0.00 system, 0.73 real
+    Number of instructions executed: 6524457
+    Simulation speed: 9061.75 K instr/s
+ArchC: Simulation statistics
+    Times: 0.72 user, 0.00 system, 0.73 real
+    Number of instructions executed: 6540826
+    Simulation speed: 9084.48 K instr/s
+```
+###Singlethread **N** = 100000000
+```javascript
+ArchC: Reading ELF application file: myprogs/mediavetorSingleThread.mips
+ArchC: -------------------- Starting Simulation --------------------
+Vetor de tamanho [1000000] inicializado: { 0, 2, 4, 6, ..., 1999996, 1999998 }
+Processor number 0 summed from index 0 to 1000000 and got: -728379968
+ArchC: -------------------- Simulation Finished --------------------
+ArchC: Simulation statistics
+    Times: 0.78 user, 0.00 system, 0.80 real
+    Number of instructions executed: 9024453
+    Simulation speed: 11569.81 K instr/s
+```
 
 ##Conclusão
+O ganho de paralelismo foi surpreendentemente pequeno, no caso singlethread tivemos 0.80 segundos de tempo real enquanto no multithread tivemos 0.73 segundos de tempo real. O ganho é de aproximadamente 9% em uma aplicação altamente paralelizável, por isso é surpreendentemente pequeno. Talvez tenha sido alguma imprecisão de simulação ou falta de multiprocessamento da parte do servidor ssh do laboratório do ic. 

@@ -9,10 +9,18 @@ O enunciado do exercício se encontra no site: http://www.ic.unicamp.br/~lucas/t
 
 Nem todas as funcionalidades de um computador são responsabilidade do processador. Muitas funcionalidades não conseguiriam ser feitas pelo processador ou seriam feitas de maneira pouco eficaz. Exemplos são processamento de gráfico, de áudio, captura de input de usuário, armazenamento de grandes arquivos de forma permanente, dentre outros. A solução é fazer os processadores se comunicarem com outros componentes especializados, chamados de **periféricos**, os quais realizam essas funcionalidades complementares ao processador. Essa comunicação é feita de forma encapsulada, através de um **barrmento**, e aos olhos do processador as operações de periféricos são vistas como simples manipulação de memória.
 
-##Criando um periférico
+##Periférico Básico
 > "Neste exercício você vai criar uma plataforma multicore com memória compartilhada e um periférico que implementa funcionalidade load-and-increment."
 
-Neste 
+O primeiro periférico a ser criado é um (controlador de deadlock)[TODO]. Em uma plataforma multicore rodando código em paralelo existe problema na execução de código de região crítica. Utilizando uma analogia, imagine que existe apenas um banheiro numa república de estudantes da Unicamp e todos os 5 estudantes que moram na casa tem aula às 8h da manhã. Ao acordarem, todos se arrumam paralelamente e tomam café paralelamente, entretanto é impossível que eles usem o banheiro paralelamente, pois o banheiro não pode ser usado por mais de uma pessoa ao mesmo tempo, o banheiro é uma região crítica no paralelismo. A postura mais simples é os estudantes que não conseguiram entrar no banheiro ficarem esperando ele ser liberado. Ao ser liberado, o primeiro que conseguir entrar tranca a porta e deixa os demais esperando, isto se repete até que todos usem o banheiro. Essa é a disputa do uso de região crítica em multiprocessadores e essa é a abordagem que o nosso periférico irá tomar quanto à solução, em que na analogia o periférico é a chave da porta. 
+
+O primeiro processador que ler o periférico deve ler *0*, "tomando a posse da chave". Qualquer outra leitura após essa irá retornar *1*, significando que a chave nesse momento já tem dono. A escrita no periférico representa o "retorno da chave" e portanto deve ser feita pelo processador que atualmente tem a chave e deve ser feita com um valor de *0*, isso segundo a nossa convenção. O periférico apenas deve implementar as seguites funcões:
+
+* Leitura(): Lê e retorna o valor da memória do periférico para o usuário. Escreve *1* na memória do periférico. O valor inicial do periférico é *0*
+* Escrita(x): Escreve *x* na memória do periférico.
+
+Essas funções são encapsuladas para o processador, caso o processador leia uma tal regição de memória X (que está fora da RAM) ele estará executando a função de **leitura** do periférico e caso o processador escreva nessa região X ele estará executando a função de **escrita** do periférico.
+
 
 ```cpp
 //Soma.c

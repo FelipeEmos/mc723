@@ -53,7 +53,7 @@ int main(){
 O próximo passo é modificar as configurações do simulador indicando que queremos simular uma plataforma multicore. Foi necessário alterar os arquivos main.cpp, para inicializar dois processadores, e mips_isa.cpp, para garantir as duas stacks diferentes (para que não ocorra colisão de variáveis nas chamadas de função). Nessas modificações foi seguido o [material de apoio](content/Multicore_Lock.pdf). A modificação no main.cpp é muito bem descrita no material de apoio. Já a modificação do mips_isa.cpp descrita no material de apoio não precisa ser feita em sua integridade, pois o simulador disponibilizado para download fornecido neste exercício já apresenta o código de recorte da RAM nas diferentes stacks, o que deve ser modificado é o tamanho da stack (que não pode ser muito grande porque a RAM atual é pequena). Foram usadas stacks de tamanho 128kB e isto resolveu um bug. Outra alternativa seria mudar o tamanho da RAM.
 
 Para testar o multicore foir feito um programa chamado **mediavetor.c** que, a partir de um vetor de números inteiros, calcula a soma e a média dos mesmos. O uso do multiprocessamento está no fato que um processador soma metade do vetor e o outro processador soma a outra metade. O log desse programa para um vetor com tamanho **N**=20000 pode ser visto a seguir:
-###Multithread **N** = 20000
+####Multithread **N** = 20000
 ```javascript
 ArchC: Reading ELF application file: myprogs/mediavetor.mips
 ArchC: -------------------- Starting Simulation --------------------
@@ -80,7 +80,7 @@ ArchC: Simulation statistics
 
 Com o trabalho dividido pela metade tivemos desempenho de 0.03 segundos de tempo de usuário. O log de uma modificação desse código para a não divisão de trabalho pode ser visto a seguir:
 
-###Singlethread **N** = 20000
+####Singlethread **N** = 20000
 ```javascript
 ArchC: Reading ELF application file: myprogs/mediavetorSingleThread.mips
 ArchC: -------------------- Starting Simulation --------------------
@@ -97,7 +97,7 @@ ArchC: Simulation statistics
 
 A diferença é imperceptível! Isto é muito longe do esperado, este fenômeno ocorre porquê o experimento é muito rápido e a parte paralelizável não ocupa tempo significativo para fazer diferença *"Simulation speed: (too fast to be precise)"*, aumentando o tamanho do vetor a diferença deve ficar perceptível! O **drawback** é que a soma dos vetores vai fazer overflow nos inteiros, então fica a nota de que os próximos valores de soma e média não serão realistas, entretanto o paralelismo irá se mostrar mais eficaz.
 
-###Multithread **N** = 100000000
+####Multithread **N** = 100000000
 ```javascript
 ArchC: Reading ELF application file: myprogs/mediavetor.mips
 ArchC: -------------------- Starting Simulation --------------------
@@ -118,7 +118,7 @@ ArchC: Simulation statistics
     Number of instructions executed: 6540826
     Simulation speed: 9084.48 K instr/s
 ```
-###Singlethread **N** = 100000000
+####Singlethread **N** = 100000000
 ```javascript
 ArchC: Reading ELF application file: myprogs/mediavetorSingleThread.mips
 ArchC: -------------------- Starting Simulation --------------------
